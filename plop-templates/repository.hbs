@@ -1,0 +1,40 @@
+{{#includes "find|findBy" includeRepositoryMethods}}import requestGet from 'src/core/api/requestGet';{{/includes}}
+{{~#includes "create" includeRepositoryMethods}}import requestPost from 'src/core/api/requestPost';{{/includes}}
+{{~#includes "update" includeRepositoryMethods}}import requestPatch from 'src/core/api/requestPatch';{{/includes}}
+{{~#includes "find|findBy" includeRepositoryMethods}}import adapt{{pascalCase name}} from 'src/{{pascalCase name}}/adapter/adapt{{pascalCase name}}';{{/includes}}
+{{~#includes "create|update" includeRepositoryMethods}}import prepare{{pascalCase name}} from 'src/{{pascalCase name}}/adapter/prepare{{pascalCase name}}';{{/includes}}
+
+export default {
+  {{#includes "find" includeRepositoryMethods}}
+  find: (id) => {
+    return requestGet(`/{{kebabCase name}}/${id}`, {
+      adapt: adapt{{pascalCase name}},
+    });
+  },
+
+  {{/includes}}
+  {{#includes "findBy" includeRepositoryMethods}}
+  findBy: (qs = []) => {
+    return requestGet('/{{kebabCase name}}', {
+      adapt: adapt{{pascalCase name}},
+      qs,
+    });
+  },
+
+  {{/includes}}
+  {{#includes "create" includeRepositoryMethods}}
+  create: ({{lowerCase name}}) => {
+    return requestPost(`/{{kebabCase name}}`, {
+      data: prepare{{pascalCase name}}({{lowerCase name}}),
+    });
+  },
+
+  {{/includes}}
+  {{#includes "update" includeRepositoryMethods}}
+  update: ({{lowerCase name}}) => {
+    return requestPatch(`/{{kebabCase name}}/${({{lowerCase name}}.id)}`, {
+      data: prepare{{pascalCase name}}({{lowerCase name}}),
+    });
+  }
+  {{/includes}}
+};

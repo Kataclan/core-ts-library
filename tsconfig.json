@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "dist",
+    //    "outDir": "dist",
+    //    "emitDeclarationOnly": false,
+    "allowSyntheticDefaultImports": true,
+    //    "baseUrl": ".",
+    //    "paths": {
+    //      "src/*": ["src/*"]
+    //    },
+    //    "allowJs": true
+    "esModuleInterop": true
+    //    "experimentalDecorators": true
+  }
+}

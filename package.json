@@ -1,0 +1,66 @@
+{
+  "name": "@zeelo/corejs",
+  "version": "0.90.0",
+  "description": "Core JS files for every JS site.",
+  "scripts": {
+    "start": "webpack --config webpack.dev.config.babel.js --watch",
+    "build": "webpack --config webpack.prod.config.babel.js",
+    "prebuild": "npm run cleanDist",
+    "cleanDist": "rm -fr dist",
+    "analyze": "webpack -p --config webpack.analyze.config.babel.js",
+    "check": "npm run formatcode && npm run lint",
+    "formatcode": "pretty-quick --staged",
+    "lint": "eslint . --ext .js",
+    "test": "CI=true && jest",
+    "dep:clean": "rm -fr node_modules package-lock.json && npm i --legacy-peer-deps",
+    "plop": "plop",
+    "git:reset": "git branch --show-current | awk '{system(\"git reset --hard origin/\" $1)}'"
+  },
+  "author": "Zeelo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "0.21.1",
+    "lodash": "4.17.21"
+  },
+  "main": "dist/fecore.min.js",
+  "files": [
+    "dist"
+  ],
+  "typings": "./index.d.ts",
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@babel/plugin-proposal-class-properties": "7.16.0",
+    "@babel/plugin-transform-runtime": "7.16.4",
+    "@babel/polyfill": "7.12.1",
+    "@babel/preset-env": "7.16.4",
+    "@babel/preset-typescript": "7.16.0",
+    "@babel/register": "7.16.0",
+    "@babel/runtime": "7.16.3",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "5.4.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "27.3.1",
+    "babel-loader": "8.2.3",
+    "clean-webpack-plugin": "3.0.0",
+    "enhanced-resolve": "4.1.1",
+    "eslint": "7.32.0",
+    "husky": "4.2.3",
+    "jest": "27.3.1",
+    "moment-timezone": "0.5.28",
+    "plop": "2.7.4",
+    "prettier": "2.0.4",
+    "pretty-quick": "2.0.1",
+    "ts-jest": "27.0.7",
+    "ts-loader": "9.4.2",
+    "typescript": "4.9.5",
+    "uuid": "3.3.3",
+    "webpack": "5.75.0",
+    "webpack-bundle-analyzer": "4.8.0",
+    "webpack-cli": "5.0.1",
+    "webpack-merge": "5.8.0"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  }
+}
